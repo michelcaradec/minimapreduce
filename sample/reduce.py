@@ -14,4 +14,5 @@ def _reduce(_, values):
     return count
 
 
-reducer(sys.stdin, _reduce)
+if __name__ == '__main__':
+    reducer(sys.stdin, _reduce)

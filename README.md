@@ -4,9 +4,11 @@ A simple framework for MapReduce processing on a single machine.
 
 ## Usage
 
+From command line:
+
 ```bash
 cd sample
-cat corpus.txt | python map.py | sort | python reduce.py
+cat corpus.txt | python map.py | python shuffle.py | python reduce.py
 ```
 
 ## Mapper
@@ -19,9 +21,9 @@ def mapper(stream, map_function, emit=emit_console)
 
 | Argument | Description |
 |---|---|
-| stream | Input stream. Must be iterable. |
+| stream | Iterable input stream. |
 | map_function | Function called to map each input stream entry. |
-| emit | Function called to output map_function result. Default emit_console outputs to console. |
+| emit | Function called to output `map_function` result. Default `emit_console` outputs to console. |
 
 #### map_function Function
 
@@ -48,6 +50,8 @@ def emit(key, value=None)
 |---|---|
 | key | Key. |
 | value | Value associated to key. |
+
+When emitted, key and value must be separated by `common.COLUMN_SEPARATOR`. `common.format_key_value` can be used to do so.
 
 ## Reducer
 

@@ -14,4 +14,5 @@ def _map(line, emit):
         emit(token, 1)
 
 
-mapper(sys.stdin, _map)
+if __name__ == '__main__':
+    mapper(sys.stdin, _map)
